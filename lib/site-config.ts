@@ -81,8 +81,8 @@ export const mainNav = [
   { id: sectionIds.hero, href: sectionHref(sectionIds.hero), label: 'Trang chủ' },
   { id: sectionIds.about, href: sectionHref(sectionIds.about), label: 'Giới thiệu' },
   { id: sectionIds.concepts, href: sectionHref(sectionIds.concepts), label: 'Concept' },
-  { id: sectionIds.pricing, href: sectionHref(sectionIds.pricing), label: 'Bảng giá' },
   { id: sectionIds.gallery, href: sectionHref(sectionIds.gallery), label: 'Bộ sưu tập' },
+  { id: sectionIds.pricing, href: sectionHref(sectionIds.pricing), label: 'Bảng giá' },
 ] as const
 
 export const bookingHref = sectionHref(sectionIds.booking)

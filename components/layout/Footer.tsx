@@ -98,7 +98,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="container-page relative border-t border-cream/10 pb-28 pt-6 text-xs text-cream/50 md:pb-8">
+      <div className="container-page relative border-t border-cream/10 pb-6 pt-6 text-xs lg:text-center text-cream/50 md:pb-8">
         © {siteConfig.copyrightYear} {siteConfig.name}.
       </div>
     </footer>

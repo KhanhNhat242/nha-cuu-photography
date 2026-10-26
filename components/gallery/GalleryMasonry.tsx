@@ -127,11 +127,13 @@ function Lightbox({
   // Mở: focus nút đóng, khóa cuộn. Đóng: trả focus về ảnh vừa bấm.
   useEffect(() => {
     const opener = document.activeElement instanceof HTMLElement ? document.activeElement : null
-    const prevOverflow = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    // khóa cuộn ở <html> (xem ghi chú trong components/layout/Header.tsx)
+    const root = document.documentElement
+    const prevOverflow = root.style.overflow
+    root.style.overflow = 'hidden'
     closeRef.current?.focus()
     return () => {
-      document.body.style.overflow = prevOverflow
+      root.style.overflow = prevOverflow
       opener?.focus()
     }
   }, [])

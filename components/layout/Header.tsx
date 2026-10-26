@@ -57,14 +57,17 @@ export function Header({ validSlugs }: { validSlugs: string[] }) {
 
   useEffect(() => {
     if (!open) return
-    const prev = document.body.style.overflow
-    document.body.style.overflow = 'hidden'
+    // Khóa cuộn ở <html>, không ở <body>: html có overflow-x: clip nên body:hidden sẽ biến body thành
+    // khung cuộn riêng → header sticky bám theo body và trôi mất khỏi đầu màn hình.
+    const root = document.documentElement
+    const prev = root.style.overflow
+    root.style.overflow = 'hidden'
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setOpen(false)
     }
     window.addEventListener('keydown', onKey)
     return () => {
-      document.body.style.overflow = prev
+      root.style.overflow = prev
       window.removeEventListener('keydown', onKey)
     }
   }, [open])

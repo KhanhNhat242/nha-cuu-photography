@@ -41,8 +41,8 @@ export default function HomePage() {
       <HeroSection />
       <StrengthsSection />
       <CategoriesSection />
-      <PricingPreviewSection />
       <GallerySection />
+      <PricingPreviewSection />
     </>
   )
 }
