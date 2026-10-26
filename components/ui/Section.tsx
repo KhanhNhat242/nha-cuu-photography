@@ -1,6 +1,7 @@
 // Khung section chuẩn — áp dụng quy chuẩn khoảng cách & nhịp nền (REQUIREMENTS 6.6).
 import type { CSSProperties, ReactNode } from 'react'
 import { WoolSquiggle } from './WoolLine'
+import { SideOrnaments, type OrnamentVariant } from './SideOrnaments'
 
 /** '' = không đặt nền riêng */
 type Tone = 'cream' | 'cream-200' | ''
@@ -19,6 +20,7 @@ export function Section({
   containerClassName = '',
   children,
   labelledBy,
+  ornaments,
 }: {
   id?: string
   tone?: Tone
@@ -28,13 +30,16 @@ export function Section({
   containerClassName?: string
   children: ReactNode
   labelledBy?: string
+  /** họa tiết vẽ tay ở hai mép dọc màn hình (components/ui/SideOrnaments.tsx) */
+  ornaments?: OrnamentVariant
 }) {
   return (
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={`relative py-16 md:py-20 lg:py-28 ${toneClass[tone]} ${divider ? 'border-t border-line' : ''} ${className}`}
+      className={`relative py-16 md:py-20 lg:py-28 ${toneClass[tone]} ${divider ? 'border-t border-line' : ''} ${ornaments ? 'overflow-x-clip' : ''} ${className}`}
     >
+      {ornaments && <SideOrnaments variant={ornaments} />}
       <div className={`container-page relative ${containerClassName}`}>{children}</div>
     </section>
   )

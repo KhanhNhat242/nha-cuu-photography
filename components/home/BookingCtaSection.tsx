@@ -8,7 +8,7 @@ import { WoolLine } from '@/components/ui/WoolLine'
 
 export function BookingCtaSection() {
   return (
-    <Section id={sectionIds.booking} tone="cream" divider={false} className="pt-0! pb-20! md:pb-24! lg:pb-28!" labelledBy="cta-title">
+    <Section ornaments="booking" id={sectionIds.booking} tone="cream" divider={false} className="pt-0! pb-20! md:pb-24! lg:pb-28!" labelledBy="cta-title">
       <div
         {...reveal('up')}
         className="paper-grain relative overflow-hidden rounded-[2rem] border border-line bg-cream-200 px-6 py-14 text-center md:rounded-[2.5rem] md:px-12 md:py-20"

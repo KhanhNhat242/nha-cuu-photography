@@ -220,6 +220,7 @@ Mọi màu phải khai báo một lần dưới dạng biến CSS trong `app/glo
 - Logo là nét vẽ liền mạch hình đám mây lông cừu nối vào chữ viết tay "nhà cừu".
 - Khung ảnh bo góc mềm `rounded-2xl`. Ảnh Hero và ảnh nổi bật dùng **khung vòm** `rounded-t-full`. Viền mảnh màu `--color-line`.
 - Hoạ tiết trang trí: đường lông cừu (SVG nét mảnh, độ mờ thấp) vẽ lại từ đám mây trong logo. Component: `components/ui/WoolLine.tsx`.
+- **Họa tiết hai mép dọc màn hình** (v2.2): mỗi section (trừ Hero) có một cặp hình vẽ tay nét mảnh theo nội dung — Điểm mạnh: sao lấp lánh / trái tim; Concept: máy ảnh / đám mây lông cừu; Concept nổi bật: cành hoa / bóng bay; Bảng giá: cành hoa / hộp quà; Bộ sưu tập: ảnh polaroid / cuộn phim; Chi nhánh: ghim bản đồ / ngôi nhà; Kêu gọi đặt lịch: lịch / sao. Màu `--color-accent` mờ, bay nhẹ (`.deco-float`), chỉ hiện từ 1280px. Dùng qua prop `ornaments` của `Section` (`components/ui/SideOrnaments.tsx`).
 
 ### 6.6. Quy chuẩn khoảng cách và nhịp nền (bắt buộc cho mọi section)
 
@@ -583,6 +584,7 @@ Mỗi lần phạm vi thay đổi (thêm hoặc bớt chức năng, khách phả
 |---|---|---|---|
 | 23/10/2026 | 1.0 | Lập tài liệu từ Phiếu Dev 43 | Phiếu PDF |
 | 23/10/2026 | 1.1 | Nâng Next.js 16.4.0 → 16.4.2 (bản vá bảo mật) | `next upgrade --agent=security` |
+| 26/10/2026 | 2.2 | Thêm họa tiết vẽ tay ở hai mép dọc màn hình cho các section trừ Hero (mục 6.5) | Yêu cầu của người dùng |
 | 26/10/2026 | 2.1 | Khối 6 (bộ sưu tập): thêm ô "Xem thêm" mở lightbox, thêm 30 ảnh xem thêm | Yêu cầu của người dùng |
 | 26/10/2026 | 2.0 | Thêm form đặt lịch F08 vào cột phải khối Bảng giá trang chủ; nút "Chọn gói này" điền sẵn gói vào form. Thêm phụ thuộc trực tiếp `dayjs` (giá trị của antd DatePicker, locale `vi`) | Yêu cầu của người dùng, kèm code mẫu |
 | 26/10/2026 | 1.9 | Thẻ carousel danh mục (khối 2) không còn dẫn sang `/concept?danh-muc=…`; bỏ dòng số concept / "Xem concept" ở chân thẻ | Yêu cầu của người dùng |

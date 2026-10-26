@@ -69,7 +69,6 @@ export const sectionIds = {
   concepts: 'concept',
   pricing: 'bang-gia',
   gallery: 'bo-suu-tap',
-  contact: 'lien-he',
   booking: 'dat-lich',
 } as const
 
@@ -84,7 +83,6 @@ export const mainNav = [
   { id: sectionIds.concepts, href: sectionHref(sectionIds.concepts), label: 'Concept' },
   { id: sectionIds.pricing, href: sectionHref(sectionIds.pricing), label: 'Bảng giá' },
   { id: sectionIds.gallery, href: sectionHref(sectionIds.gallery), label: 'Bộ sưu tập' },
-  { id: sectionIds.contact, href: sectionHref(sectionIds.contact), label: 'Liên hệ' },
 ] as const
 
 export const bookingHref = sectionHref(sectionIds.booking)

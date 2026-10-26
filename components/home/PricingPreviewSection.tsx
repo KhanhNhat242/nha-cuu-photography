@@ -21,7 +21,7 @@ export function PricingPreviewSection() {
     .filter((g) => g.options.length > 0)
 
   return (
-    <Section id={sectionIds.pricing} tone="cream" labelledBy="pricing-title">
+    <Section ornaments="pricing" id={sectionIds.pricing} tone="cream" labelledBy="pricing-title">
       <SectionHeading
         id="pricing-title"
         eyebrow="Bảng giá theo gói"
@@ -48,7 +48,7 @@ export function PricingPreviewSection() {
                 >
                   {hl && (
                     <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-accent px-4 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-cream">
-                      Gói gợi ý
+                      Phổ biến
                     </span>
                   )}
                   <h3 className="font-display text-[1.75rem] font-medium leading-tight xl:text-[1.6rem]">{pkg.name}</h3>

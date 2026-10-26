@@ -11,7 +11,7 @@ export function CategoriesSection() {
     .map((category) => ({ category }))
 
   return (
-    <Section id={sectionIds.about} tone="cream-200" labelledBy="categories-title">
+    <Section ornaments="categories" id='concept' tone="cream-200" labelledBy="categories-title">
       <SectionHeading
         id="categories-title"
         eyebrow=""

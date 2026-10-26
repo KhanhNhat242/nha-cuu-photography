@@ -5,7 +5,6 @@ import { FeaturedConceptsSection } from '@/components/home/FeaturedConceptsSecti
 import { StrengthsSection } from '@/components/home/StrengthsSection'
 import { PricingPreviewSection } from '@/components/home/PricingPreviewSection'
 import { GallerySection } from '@/components/home/GallerySection'
-import { BranchesSection } from '@/components/home/BranchesSection'
 import { BookingCtaSection } from '@/components/home/BookingCtaSection'
 import { branches, siteConfig } from '@/lib/site-config'
 

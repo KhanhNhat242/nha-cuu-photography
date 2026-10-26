@@ -26,8 +26,8 @@ const rows = [
 
 export function StrengthsSection() {
   return (
-    <Section tone="cream" labelledBy="strengths-title">
-      <SectionHeading id="strengths-title" eyebrow="Vì sao chọn Nhà Cừu" title="Điều Nhà Cừu" accent="mang đến cho bạn" />
+    <Section ornaments="about" tone="cream" labelledBy="strengths-title">
+      <SectionHeading id="gioi-thieu" eyebrow="Vì sao chọn Nhà Cừu" title="Điều Nhà Cừu" accent="mang đến cho bạn" />
 
       <div className="flex flex-col gap-4 md:gap-5">
         {rows.map((row, r) => (
@@ -57,14 +57,14 @@ export function StrengthsSection() {
                     <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/40 via-55% to-ink/5" />
 
                     <div className="absolute inset-x-0 bottom-0 p-7 md:p-8">
-                      <h3 className="mt-4 font-display text-2xl font-medium md:text-[1.7rem] lg:whitespace-nowrap">
+                      <h3 className="mt-4 text-balance font-display text-2xl font-medium md:text-[1.7rem] lg:whitespace-nowrap">
                         {item.title}
                       </h3>
                       <span
                         aria-hidden="true"
                         className="mt-3 block h-px w-10 bg-cream/70 transition-all duration-500 group-hover:w-16 group-hover:bg-cream"
                       />
-                      <p className="mt-3 max-w-xs text-[15px] leading-relaxed text-cream/85">{item.text}</p>
+                      <p className="mt-3 max-w-xs text-balance text-[15px] leading-relaxed text-cream/85">{item.text}</p>
                     </div>
                   </div>
                 </li>

@@ -8,7 +8,7 @@ import { sectionIds } from '@/lib/site-config'
 
 export function GallerySection() {
   return (
-    <Section id={sectionIds.gallery} tone="cream-200" labelledBy="gallery-title">
+    <Section ornaments="gallery" id={sectionIds.gallery} tone="cream-200" labelledBy="gallery-title">
       <SectionHeading
         id="gallery-title"
         eyebrow="Bộ sưu tập"

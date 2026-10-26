@@ -13,7 +13,7 @@ export function FeaturedConceptsSection() {
   const featured = getFeaturedConcepts().slice(0, 8)
 
   return (
-    <Section id={sectionIds.concepts} tone="cream" labelledBy="featured-title">
+    <Section ornaments="concepts" id={sectionIds.concepts} tone="cream" labelledBy="featured-title">
       <SectionHeading
         id="featured-title"
         eyebrow="Concept nổi bật"

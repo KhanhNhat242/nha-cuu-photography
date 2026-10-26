@@ -95,17 +95,11 @@ export function Footer() {
             <PhoneIcon size={20} />
             {siteConfig.phone.display}
           </a>
-          <Link
-            href={bookingHref}
-            className="mt-6 flex h-11 w-max items-center rounded-full bg-cream px-5 text-sm font-medium text-ink transition-colors hover:bg-cream-200"
-          >
-            Đặt lịch chụp
-          </Link>
         </div>
       </div>
 
       <div className="container-page relative border-t border-cream/10 pb-28 pt-6 text-xs text-cream/50 md:pb-8">
-        © {siteConfig.copyrightYear} {siteConfig.name}. Bảo lưu mọi quyền.
+        © {siteConfig.copyrightYear} {siteConfig.name}.
       </div>
     </footer>
   )
