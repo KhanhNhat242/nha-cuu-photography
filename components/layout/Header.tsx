@@ -85,11 +85,10 @@ export function Header({ validSlugs }: { validSlugs: string[] }) {
   return (
     <>
       <header
-        className={`sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-500 ease-soft ${
-          overHero
+        className={`sticky top-0 z-50 border-b transition-[background-color,border-color,box-shadow,backdrop-filter] duration-500 ease-soft ${overHero
             ? 'border-transparent bg-transparent'
             : `bg-cream/85 backdrop-blur-[12px] ${scrolled || open ? 'border-line shadow-[0_8px_30px_-20px_rgb(58_51_48/0.25)]' : 'border-transparent'}`
-        }`}
+          }`}
       >
         <div className="container-page flex h-(--header-h) items-center justify-between gap-4 lg:grid lg:grid-cols-[1fr_auto_1fr]">
           <Logo preload onDark={overHero} className="h-10 w-auto sm:h-11 lg:h-[3.6rem]" />
@@ -104,22 +103,20 @@ export function Header({ validSlugs }: { validSlugs: string[] }) {
                       href={item.href}
                       onClick={(e) => go(e, item.id)}
                       aria-current={active ? 'location' : undefined}
-                      className={`relative inline-flex h-10 items-center px-3 text-[14.5px] transition-colors duration-300 ${
-                        overHero
+                      className={`relative inline-flex h-10 items-center px-3 text-[14.5px] transition-colors duration-300 ${overHero
                           ? active
                             ? 'font-medium text-cream'
                             : 'text-cream/75 hover:text-cream'
                           : active
                             ? 'font-medium text-ink'
                             : 'text-ink-muted hover:text-ink'
-                      }`}
+                        }`}
                     >
                       {item.label}
                       <span
                         aria-hidden="true"
-                        className={`absolute inset-x-3 bottom-1.5 h-px origin-center transition-[transform,background-color] ${overHero ? 'bg-cream' : 'bg-accent'} duration-500 ease-soft ${
-                          active ? 'scale-x-100' : 'scale-x-0'
-                        }`}
+                        className={`absolute inset-x-3 bottom-1.5 h-px origin-center transition-[transform,background-color] ${overHero ? 'bg-cream' : 'bg-accent'} duration-500 ease-soft ${active ? 'scale-x-100' : 'scale-x-0'
+                          }`}
                       />
                     </a>
                   </li>
@@ -130,11 +127,10 @@ export function Header({ validSlugs }: { validSlugs: string[] }) {
 
           <div className="flex items-center gap-2 lg:justify-self-end">
             <a
-              href={bookingHref}
+              href='#bang-gia'
               onClick={(e) => go(e, sectionIds.booking)}
-              className={`relative inline-flex h-10 items-center gap-2 rounded-full px-4 text-[13.5px] font-medium shadow-float transition-colors duration-500 lg:h-11 lg:px-6 lg:text-sm ${
-                overHero ? 'bg-cream text-ink hover:bg-cream-200' : 'bg-ink text-cream hover:bg-ink-soft'
-              }`}
+              className={`relative inline-flex h-10 items-center gap-2 rounded-full px-4 text-[13.5px] font-medium shadow-float transition-colors duration-500 lg:h-11 lg:px-6 lg:text-sm ${overHero ? 'bg-cream text-ink hover:bg-cream-200' : 'bg-ink text-cream hover:bg-ink-soft'
+                }`}
             >
               <CalendarIcon size={17} className="hidden sm:block" />
               Đặt lịch
@@ -153,9 +149,8 @@ export function Header({ validSlugs }: { validSlugs: string[] }) {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? 'Đóng menu' : 'Mở menu'}
-              className={`inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-500 lg:hidden ${
-                overHero ? 'border-cream/40 text-cream hover:bg-cream/10' : 'border-line text-ink hover:bg-cream-200'
-              }`}
+              className={`inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors duration-500 lg:hidden ${overHero ? 'border-cream/40 text-cream hover:bg-cream/10' : 'border-line text-ink hover:bg-cream-200'
+                }`}
             >
               {open ? <CloseIcon size={20} /> : <MenuIcon size={20} />}
             </button>
@@ -167,9 +162,8 @@ export function Header({ validSlugs }: { validSlugs: string[] }) {
       <div
         id="mobile-menu"
         inert={!open}
-        className={`fixed inset-x-0 bottom-0 top-(--header-h) z-[45] overflow-y-auto bg-cream transition-[opacity,transform] duration-500 ease-soft lg:hidden ${
-          open ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-3 opacity-0'
-        }`}
+        className={`fixed inset-x-0 bottom-0 top-(--header-h) z-[45] overflow-y-auto bg-cream transition-[opacity,transform] duration-500 ease-soft lg:hidden ${open ? 'translate-y-0 opacity-100' : 'pointer-events-none -translate-y-3 opacity-0'
+          }`}
       >
         <nav aria-label="Menu di động" className="container-page flex min-h-full flex-col pb-10 pt-6">
           <ul className="divide-y divide-line border-y border-line">
