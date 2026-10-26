@@ -127,6 +127,18 @@ export const ImagesIcon = (p: IconProps) => (
   </Base>
 )
 
+export const PauseIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M9 6v12M15 6v12" />
+  </Base>
+)
+
+export const PlayIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M8 5.5v13l10.5-6.5Z" />
+  </Base>
+)
+
 /** Logo Facebook (dạng chữ f) */
 export const FacebookIcon = ({ size = 20, ...p }: IconProps) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" {...p}>

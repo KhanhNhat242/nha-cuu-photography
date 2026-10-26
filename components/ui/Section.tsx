@@ -2,16 +2,18 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { WoolSquiggle } from './WoolLine'
 
-type Tone = 'cream' | 'cream-200'
+/** '' = không đặt nền riêng */
+type Tone = 'cream' | 'cream-200' | ''
 
 const toneClass: Record<Tone, string> = {
   cream: 'bg-cream',
   'cream-200': 'bg-cream-200 paper-grain',
+  '': '',
 }
 
 export function Section({
   id,
-  tone = 'cream',
+  tone = '',
   divider = true,
   className = '',
   containerClassName = '',

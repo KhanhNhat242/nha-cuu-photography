@@ -1,6 +1,6 @@
 // F01 — Khối 7: Hệ thống 2 chi nhánh (REQUIREMENTS 2.2, 2.3)
 // CN Thủ Đức: bản đồ nhúng theo tọa độ ghim. CN Gò Vấp: chưa có ghim chính thức → minh họa + link tìm kiếm.
-import { branches, siteConfig } from '@/lib/site-config'
+import { branches, siteConfig, sectionIds } from '@/lib/site-config'
 import { Section, SectionHeading, reveal } from '@/components/ui/Section'
 import { ArrowUpRightIcon, MapPinIcon, PhoneIcon } from '@/components/ui/Icons'
 import type { Branch } from '@/types'
@@ -88,7 +88,7 @@ function BranchCard({ branch, index }: { branch: Branch; index: number }) {
 
 export function BranchesSection() {
   return (
-    <Section tone="cream" labelledBy="branches-title">
+    <Section id={sectionIds.contact} tone="cream" labelledBy="branches-title">
       <SectionHeading id="branches-title" eyebrow="Hệ thống chi nhánh" title="Ghé thăm" accent="Nhà Cừu" />
 
       <ul className="grid gap-6 md:grid-cols-2 lg:gap-8">

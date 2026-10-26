@@ -1,6 +1,7 @@
 'use client'
 
 // Lưới masonry + lightbox (F01 khối 6, F06).
+// - more: ảnh xem thêm — không hiện trên lưới, ô "Xem thêm" cuối cột phải mở lightbox từ ảnh thêm đầu tiên.
 // - Lightbox: phím ← → Esc, vuốt trên điện thoại, giữ focus trong popup, khóa cuộn trang.
 // - Tự đóng khi rời trang: với Cache Components, trang cũ được giữ bằng <Activity> (REQUIREMENTS F06).
 import Image from 'next/image'
@@ -10,8 +11,9 @@ import type { Photo } from '@/types'
 import { reveal } from '@/components/ui/Section'
 import { ChevronLeftIcon, ChevronRightIcon, CloseIcon, PlusIcon } from '@/components/ui/Icons'
 
-export function GalleryMasonry({ photos }: { photos: Photo[] }) {
+export function GalleryMasonry({ photos, more = [] }: { photos: Photo[]; more?: Photo[] }) {
   const [index, setIndex] = useState<number | null>(null)
+  const all = more.length ? [...photos, ...more] : photos
 
   // Trang bị ẩn bởi <Activity> → đóng popup để lúc quay lại không thấy popup đang mở
   useLayoutEffect(() => {
@@ -64,13 +66,39 @@ export function GalleryMasonry({ photos }: { photos: Photo[] }) {
                   </div>
                 )
               })}
+
+              {stretch && more.length > 0 && (
+                <div {...reveal('up', ci * 110 + col.length * 60)} className="mb-6 break-inside-avoid lg:mb-0 lg:shrink-0">
+                  <button
+                    type="button"
+                    onClick={() => setIndex(photos.length)}
+                    className="group relative block aspect-[3/2] w-full overflow-hidden rounded-2xl border border-line bg-ink text-cream"
+                    aria-label={`Xem thêm ${more.length} ảnh trong bộ sưu tập`}
+                  >
+                    <Image
+                      src={more[0].src}
+                      alt=""
+                      fill
+                      sizes="(min-width: 1024px) 380px, 50vw"
+                      className="object-cover opacity-60 blur-[2px] transition-[transform,opacity] duration-[900ms] ease-soft group-hover:scale-[1.06] group-hover:opacity-45"
+                    />
+                    <span aria-hidden="true" className="absolute inset-0 flex flex-col items-center justify-center gap-1.5 bg-ink/35">
+                      <span className="font-display text-[2rem] font-medium leading-none md:text-[2.6rem]">+{more.length}</span>
+                      <span className="inline-flex items-center gap-1.5 text-[11px] font-medium uppercase tracking-[0.2em] md:text-xs">
+                        Xem thêm
+                        <ChevronRightIcon size={14} className="transition-transform duration-300 group-hover:translate-x-0.5" />
+                      </span>
+                    </span>
+                  </button>
+                </div>
+              )}
             </div>
           )
         })}
       </div>
 
       {index !== null && (
-        <Lightbox photos={photos} index={index} onIndexChange={setIndex} onClose={() => setIndex(null)} />
+        <Lightbox photos={all} index={index} onIndexChange={setIndex} onClose={() => setIndex(null)} />
       )}
     </>
   )

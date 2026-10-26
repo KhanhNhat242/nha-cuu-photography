@@ -254,6 +254,20 @@ Quy ước route: tiếng Việt **không dấu**, chữ thường, nối bằng
 
 Menu chính: Trang chủ · Giới thiệu · Concept · Bảng giá · Bộ sưu tập · Liên hệ · **[Đặt lịch]** (dạng nút nổi bật).
 
+**Landing page một trang (người dùng chốt ngày 26/10/2026):** menu trên header, menu mobile, nút **Đặt lịch** trên header và menu ở footer **không chuyển trang**. Chúng cuộn tới section tương ứng trên trang chủ và làm nổi mục đang xem (scrollspy). Anchor khai báo một lần trong `lib/site-config.ts` (`sectionIds`):
+
+| Mục menu | Anchor | Section trên trang chủ |
+|---|---|---|
+| Trang chủ | `#trang-chu` | Khối 1 — Hero |
+| Giới thiệu | `#gioi-thieu` | Khối 2 — 6 danh mục dịch vụ |
+| Concept | `#concept` | Khối 3 — Concept nổi bật |
+| Bảng giá | `#bang-gia` | Khối 5 — Bảng giá |
+| Bộ sưu tập | `#bo-suu-tap` | Khối 6 — Bộ sưu tập |
+| Liên hệ | `#lien-he` | Khối 7 — Hai chi nhánh |
+| Đặt lịch (nút) | `#dat-lich` | Khối 8 — Kêu gọi đặt lịch |
+
+Link dạng `/#anchor`: trên trang chủ thì chỉ cuộn. Các route con ở bảng trên chưa được xây dựng.
+
 ---
 
 ## 8. Đặc tả chức năng
@@ -270,13 +284,13 @@ Thiết kế chi tiết do người dùng chốt ngày 23/10/2026. Nền section
 
 | Khối | Nền | Bố cục và ảnh | Định mức chữ | Nội dung |
 |---|---|---|---|---|
-| **Header** (cố định trên cùng) | Kem mờ `glass-panel` | Logo trái, 6 mục menu giữa, nút **Đặt lịch** phải. Mobile: logo, nút Đặt lịch, nút mở menu | 12–15 chữ | Trang chủ · Giới thiệu · Concept · Bảng giá · Bộ sưu tập · Liên hệ · Đặt lịch |
-| **1. Hero** | `cream` | **Vừa đúng 1 màn hình** (trừ header). Desktop chia 5:7. Trái: thương hiệu, tiêu đề, mô tả, 2 nút. Phải: 3 khung ảnh **vòm** ghép lệch tầng: gia đình 4 người bên cây thông, mẹ bầu hạnh phúc, nàng thơ áo dài hồng thưởng trà | 25–35 chữ | Tiêu đề: "Lưu giữ khoảnh khắc dịu dàng cùng Nhà Cừu". Mô tả: "Không gian nhiếp ảnh ấm áp chuyên chụp Bầu, Bé, Gia đình cùng các concept cá nhân và nghệ thuật tại TP.HCM." Nút: **Đặt lịch chụp** (`/dat-lich`), **Xem concept** (`/concept`) |
-| **2. 6 danh mục** | `cream-200` | Lưới 3×2 (desktop), 2 cột (mobile), đúng thứ tự mục 5.2. Mỗi thẻ: ảnh lớn, tên, 1 dòng mô tả, dẫn tới `/concept?danh-muc=…` | 10–15 chữ/thẻ | Ảnh: Bầu = vợ chồng pastel xanh. Gia đình = đại gia đình 3 thế hệ. Bé = bé đeo kính tròn trên ghế lông. Beauty = thiếu nữ áo dài hồng cài hoa. Concept cá nhân = mẹ và bé gái áo len đỏ mùa lễ hội. Nghệ thuật = ảnh bầu đen trắng |
+| **Header** (cố định trên cùng, cập nhật v1.6) | Ở đầu trang chủ: **trong suốt**, hòa vào ảnh Hero phía sau (logo bản sáng, chữ kem, nút Đặt lịch nền kem). Cuộn xuống: chuyển dần sang **kem mờ** (`bg-cream/85` + blur) như cũ. Mở menu mobile thì luôn nền kem | Logo trái, 6 mục menu giữa, nút **Đặt lịch** phải. Mobile: logo, nút Đặt lịch, nút mở menu | 12–15 chữ | Trang chủ · Giới thiệu · Concept · Bảng giá · Bộ sưu tập · Liên hệ · Đặt lịch |
+| **1. Hero** (cập nhật v1.5) | Ảnh toàn khung, phủ lớp tối dần sang trái để chữ đọc rõ | **Vừa đúng 1 màn hình**, nằm luồn dưới header trong suốt. **Carousel 5 ảnh** `public/images/hero/hero-01…05.jpg` (bố cục theo ảnh mẫu người dùng gửi). Ảnh đang chọn là **nền toàn bộ Hero**. Trái: dòng thương hiệu (h1), nhãn + tiêu đề lớn của ảnh đang chọn, mô tả, 2 nút. Dưới bên phải: **dải thẻ ảnh nhỏ** của các ảnh còn lại, nút trước/sau, thanh tiến trình, số thứ tự lớn "01". **Bấm thẻ** → ảnh trong thẻ **phóng to** từ vị trí thẻ ra phủ kín Hero và trở thành nền. **Không bấm** → sau một khoảng trễ (~6,5 giây) carousel tự phóng to thẻ kế tiếp. Rê chuột/focus vào khu điều khiển thì tạm dừng. `prefers-reduced-motion` → không phóng to, không tự chạy | 25–35 chữ | Dòng h1: "Lưu giữ khoảnh khắc dịu dàng cùng Nhà Cừu". Mô tả: "Không gian nhiếp ảnh ấm áp chuyên chụp Bầu, Bé, Gia đình cùng các concept cá nhân và nghệ thuật tại TP.HCM." Nhãn và tiêu đề từng ảnh: dev viết theo nội dung ảnh (`data/home.ts`, placeholder). Nút: **Đặt lịch chụp**, **Xem concept** |
+| **2. 6 danh mục** | `cream-200` | **Carousel coverflow** (v1.7): thẻ giữa nổi bật, 2 thẻ mỗi bên thu nhỏ, mờ dần. Nút trước/sau hai bên, chấm phân trang, vuốt trên điện thoại, phím mũi tên khi focus vào carousel. Đúng thứ tự mục 5.2. Mỗi thẻ: ảnh, số thứ tự, tên, 1 dòng mô tả. Bấm thẻ bên → đưa ra giữa. Thẻ **không chuyển trang** (landing page một trang, v1.9). Không hiện sao đánh giá hay số liệu bịa | 10–15 chữ/thẻ | Ảnh: Bầu = vợ chồng pastel xanh. Gia đình = đại gia đình 3 thế hệ. Bé = bé đeo kính tròn trên ghế lông. Beauty = thiếu nữ áo dài hồng cài hoa. Concept cá nhân = mẹ và bé gái áo len đỏ mùa lễ hội. Nghệ thuật = ảnh bầu đen trắng |
 | **3. Concept nổi bật** | `cream` | 4–8 thẻ. Mỗi thẻ: nhãn danh mục ở góc trên, tên concept, 1 câu tóm tắt, nút **Xem chi tiết** và **Chọn concept** (F07) | 15–20 chữ/thẻ | Ví dụ: Bầu – Thanh xuân ngọt ngào. Gia đình – Giáng sinh ấm áp. Bé – Thiên thần nhỏ tinh nghịch. Beauty – Nàng thơ áo dài |
-| **4. Điểm mạnh** | `cream-200` | 4 ô ngang, thẻ bo góc viền `--color-line`, icon nét mảnh | 50–65 chữ cả khối | Đúng 4 ý ở mục 4.3. Tuyệt đối không bịa số năm hay số khách |
-| **5. Trích bảng giá** | `cream` | 3 gói: Cơ bản, Tiêu chuẩn (đóng khung nổi bật ở giữa), Cao cấp. Nút xem `/bang-gia` | 20–30 chữ/thẻ | 3–4 gạch đầu dòng mỗi gói. Giá hiển thị "Liên hệ báo giá". Nút **Chọn gói này** → `/dat-lich?goi=<id>` |
-| **6. Bộ sưu tập chọn lọc** | `cream-200` | Masonry bất đối xứng 8 ảnh, có 2 ảnh ngang (đại gia đình, bé đeo kính) xen giữa ảnh dọc. Bấm ảnh mở lightbox | 12–18 chữ | Tiêu đề: "Khoảnh khắc tại Nhà Cừu". Mô tả: "Mỗi bức ảnh là một câu chuyện kỷ niệm đáng nhớ." Nút: **Xem toàn bộ bộ sưu tập** (`/bo-suu-tap`) |
+| **4. Điểm mạnh** | `cream-200` | **Bento so le** (v1.8): hàng trên thẻ lớn – nhỏ, hàng dưới nhỏ – lớn. Mỗi thẻ là ảnh nền (chọn từ `public/images/concepts/`, khai báo trong `data/home.ts`), lớp tối dần từ dưới, icon nét mảnh, tiêu đề, mô tả. Rê chuột vào thẻ nhỏ thì hai thẻ trong hàng đổi bề rộng. Mobile: 1 cột | 50–65 chữ cả khối | Đúng 4 ý ở mục 4.3. Tuyệt đối không bịa số năm hay số khách |
+| **5. Trích bảng giá + form đặt lịch** (v2.0) | `cream` | 3 gói: Cơ bản, Tiêu chuẩn (đóng khung nổi bật ở giữa), Cao cấp. Nút xem `/bang-gia`. **Form đặt lịch F08** ở cột phải ngoài cùng (từ 1280px; nhỏ hơn thì nằm dưới các thẻ). Cột 3 thẻ giá bám dưới header khi cuộn trong phạm vi khối (từ 1280px) | 20–30 chữ/thẻ | 3–4 gạch đầu dòng mỗi gói. Giá hiển thị "Liên hệ báo giá". Nút **Chọn gói này** điền sẵn gói vào form cùng khối và cuộn tới form (không chuyển trang) |
+| **6. Bộ sưu tập chọn lọc** | `cream-200` | Masonry bất đối xứng 8 ảnh, có 2 ảnh ngang (đại gia đình, bé đeo kính) xen giữa ảnh dọc. Bấm ảnh mở lightbox. **Ô "Xem thêm"** (v2.1) cỡ 1 ảnh ngang ở đáy cột phải: bấm mở lightbox từ ảnh thêm đầu tiên; lightbox gồm 8 ảnh + **30 ảnh thêm** chọn ngẫu nhiên cố định (`homeGalleryMore` trong `data/home.ts`, lấy từ `public/images/concepts/`, không trùng 8 ảnh đang hiện) | 12–18 chữ | Tiêu đề: "Khoảnh khắc tại Nhà Cừu". Mô tả: "Mỗi bức ảnh là một câu chuyện kỷ niệm đáng nhớ." Nút: **Xem toàn bộ bộ sưu tập** (`/bo-suu-tap`) |
 | **7. Hai chi nhánh** | `cream` | 2 cột cân nhau. CN Thủ Đức có bản đồ nhúng. CN Gò Vấp có nút mở link tìm kiếm bản đồ | 45–60 chữ cả khối | Địa chỉ theo mục 2.2, nút **Chỉ đường**, dòng Hotline/Zalo 098 582 09 92 |
 | **8. Kêu gọi đặt lịch** | Banner `cream-200` viền `--color-line`, bo góc lớn, tách biệt trước footer | Căn giữa | 25–35 chữ | Tiêu đề: "Sẵn sàng lưu giữ kỷ niệm đẹp của riêng bạn?" Mô tả: "Chọn concept yêu thích và gửi yêu cầu để Nhà Cừu tư vấn chi tiết ngay hôm nay." Nút: **Đặt lịch chụp ngay**, **Nhắn Zalo**, **Gọi 098 582 09 92** |
 | **Footer** | `ink` | Logo bản sáng, menu, 2 chi nhánh, kênh liên hệ | — | Chỉ dữ liệu `[GỐC]`/`[SUY RA]` |
@@ -345,6 +359,8 @@ Các trường của form:
 - Gửi thành công thì hiện thông báo kèm mã yêu cầu. Thông báo nói rõ studio sẽ liên hệ xác nhận qua SĐT/Zalo. Có thêm nút nhắn Zalo ngay.
 - Có chống gửi trùng: khóa nút khi đang gửi. Có chống spam bằng honeypot field.
 - Form này là **gửi yêu cầu**, studio còn phải xác nhận lại. Không hiển thị như lịch đã được chốt.
+- **Đã làm (v2.0):** form nằm trong khối 5 trang chủ (landing page một trang), chưa có route `/dat-lich` riêng. Code: `components/booking/BookingForm.tsx`, `lib/bookings/` (actions, validate, repository, constants). Ô Concept chọn nhiều (antd `Select`), có thêm lựa chọn **"Nhờ Nhà Cừu tư vấn giúp"** cho khách chưa chọn được (`[GIẢ ĐỊNH]`). Concept trong khay F07 tự điền sẵn. Ngày chọn bằng antd `DatePicker`, hiển thị `dd/MM/yyyy`, chặn ngày trước ngày mai. Trên mobile, cụm nút nổi F10 tạm ẩn khi khách đang nhập form.
+- **Lưu trữ demo:** file `.data/bookings.json` (đã gitignore); host không ghi được file thì chỉ giữ trong bộ nhớ (mất khi khởi động lại).
 
 ### F09 — Liên hệ (`/lien-he`)
 - SĐT bấm gọi được, nút Zalo, Messenger, Facebook.
@@ -501,10 +517,11 @@ export interface BookingRequest {
 | Quyền lợi trong từng gói (F05, khối 5 trang chủ) | Placeholder (`placeholder: true` trong `data/packages.ts`), có chú thích "Nhà Cừu sẽ tư vấn chi tiết" |
 | Tên và mô tả các concept cụ thể | Ảnh là ảnh thật từ Drive. **Tên và mô tả concept do dev đặt** theo nội dung ảnh (`placeholder: true` trong `data/concepts.ts`), cần khách xác nhận |
 | Mô tả ngắn 6 danh mục | Văn bản dev viết, cần khách duyệt |
+| Nhãn và tiêu đề 5 ảnh carousel Hero | Dev viết theo nội dung ảnh (`data/home.ts`), cần khách duyệt |
 | Giờ mở cửa và khung giờ chụp | Chưa có |
 | Link Maps CN Gò Vấp | Dùng link tìm kiếm |
 | Link Messenger | Suy ra, cần kiểm tra |
-| Cơ chế lưu đặt lịch và đăng nhập admin | Bản demo |
+| Cơ chế lưu đặt lịch và đăng nhập admin | Bản demo: file `.data/bookings.json` / bộ nhớ (`lib/bookings/repository.ts`) |
 
 ### 10.4. Tàn dư từ template cũ cần dọn
 
@@ -566,4 +583,13 @@ Mỗi lần phạm vi thay đổi (thêm hoặc bớt chức năng, khách phả
 |---|---|---|---|
 | 23/10/2026 | 1.0 | Lập tài liệu từ Phiếu Dev 43 | Phiếu PDF |
 | 23/10/2026 | 1.1 | Nâng Next.js 16.4.0 → 16.4.2 (bản vá bảo mật) | `next upgrade --agent=security` |
+| 26/10/2026 | 2.1 | Khối 6 (bộ sưu tập): thêm ô "Xem thêm" mở lightbox, thêm 30 ảnh xem thêm | Yêu cầu của người dùng |
+| 26/10/2026 | 2.0 | Thêm form đặt lịch F08 vào cột phải khối Bảng giá trang chủ; nút "Chọn gói này" điền sẵn gói vào form. Thêm phụ thuộc trực tiếp `dayjs` (giá trị của antd DatePicker, locale `vi`) | Yêu cầu của người dùng, kèm code mẫu |
+| 26/10/2026 | 1.9 | Thẻ carousel danh mục (khối 2) không còn dẫn sang `/concept?danh-muc=…`; bỏ dòng số concept / "Xem concept" ở chân thẻ | Yêu cầu của người dùng |
+| 26/10/2026 | 1.8 | Khối 4 (điểm mạnh) đổi sang bento so le có ảnh nền | Yêu cầu của người dùng, kèm code mẫu |
+| 26/10/2026 | 1.7 | Khối 2 (6 danh mục) đổi từ lưới sang carousel coverflow | Yêu cầu của người dùng, kèm code mẫu |
+| 26/10/2026 | 1.6 | Header trong suốt hòa vào ảnh Hero khi ở đầu trang, cuộn xuống thì chuyển sang nền kem. Hero kéo lên nằm dưới header | Yêu cầu của người dùng |
+| 26/10/2026 | 1.5 | Thêm ảnh thứ 5 (bé sơ sinh, `hero-05.jpg`) vào carousel Hero | Yêu cầu của người dùng |
+| 26/10/2026 | 1.4 | Hero đổi sang carousel ảnh nền toàn khung 4 ảnh, dải thẻ nhỏ góc dưới phải, hiệu ứng phóng to thẻ thành nền khi bấm hoặc tự chạy (F01 khối 1) | Yêu cầu của người dùng, kèm ảnh mẫu bố cục |
+| 26/10/2026 | 1.3 | Landing page một trang: menu header/footer và nút Đặt lịch trên header cuộn tới section bằng anchor thay vì chuyển trang (mục 7) | Yêu cầu của người dùng |
 | 23/10/2026 | 1.2 | Chốt phong cách Warm Editorial & Soft Minimalist (6.1–6.6), font, màu nhấn. Đặc tả chi tiết 8 khối trang chủ F01 và khay concept F07. Phát hiện SĐT cũ trên logo (G12). Tổ chức kho ảnh (10.2.1) | Yêu cầu của người dùng |

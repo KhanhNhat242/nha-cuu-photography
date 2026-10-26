@@ -40,13 +40,10 @@ export default function HomePage() {
     <>
       <LocalBusinessJsonLd />
       <HeroSection />
-      <CategoriesSection />
-      <FeaturedConceptsSection />
       <StrengthsSection />
+      <CategoriesSection />
       <PricingPreviewSection />
       <GallerySection />
-      <BranchesSection />
-      <BookingCtaSection />
     </>
   )
 }

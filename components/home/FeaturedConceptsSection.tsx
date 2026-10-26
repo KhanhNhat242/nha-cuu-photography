@@ -7,12 +7,13 @@ import { Section, SectionHeading, reveal } from '@/components/ui/Section'
 import { ButtonLink } from '@/components/ui/ButtonLink'
 import { ArrowRightIcon } from '@/components/ui/Icons'
 import { SelectConceptButton } from '@/components/concept/SelectConceptButton'
+import { sectionIds } from '@/lib/site-config'
 
 export function FeaturedConceptsSection() {
   const featured = getFeaturedConcepts().slice(0, 8)
 
   return (
-    <Section tone="cream" labelledBy="featured-title">
+    <Section id={sectionIds.concepts} tone="cream" labelledBy="featured-title">
       <SectionHeading
         id="featured-title"
         eyebrow="Concept nổi bật"

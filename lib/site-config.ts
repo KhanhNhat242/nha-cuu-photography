@@ -59,13 +59,32 @@ export const branches: Branch[] = [
   },
 ]
 
+/**
+ * Anchor các section trên trang chủ — landing page một trang (REQUIREMENTS mục 7).
+ * Menu điều hướng chỉ cuộn tới các section này, không chuyển trang.
+ */
+export const sectionIds = {
+  hero: 'trang-chu',
+  about: 'gioi-thieu',
+  concepts: 'concept',
+  pricing: 'bang-gia',
+  gallery: 'bo-suu-tap',
+  contact: 'lien-he',
+  booking: 'dat-lich',
+} as const
+
+export type SectionId = (typeof sectionIds)[keyof typeof sectionIds]
+
+/** "/#id": trên trang chủ chỉ cuộn tới section */
+export const sectionHref = (id: SectionId) => `/#${id}`
+
 export const mainNav = [
-  { href: '/', label: 'Trang chủ' },
-  { href: '/gioi-thieu', label: 'Giới thiệu' },
-  { href: '/concept', label: 'Concept' },
-  { href: '/bang-gia', label: 'Bảng giá' },
-  { href: '/bo-suu-tap', label: 'Bộ sưu tập' },
-  { href: '/lien-he', label: 'Liên hệ' },
+  { id: sectionIds.hero, href: sectionHref(sectionIds.hero), label: 'Trang chủ' },
+  { id: sectionIds.about, href: sectionHref(sectionIds.about), label: 'Giới thiệu' },
+  { id: sectionIds.concepts, href: sectionHref(sectionIds.concepts), label: 'Concept' },
+  { id: sectionIds.pricing, href: sectionHref(sectionIds.pricing), label: 'Bảng giá' },
+  { id: sectionIds.gallery, href: sectionHref(sectionIds.gallery), label: 'Bộ sưu tập' },
+  { id: sectionIds.contact, href: sectionHref(sectionIds.contact), label: 'Liên hệ' },
 ] as const
 
-export const bookingHref = '/dat-lich'
+export const bookingHref = sectionHref(sectionIds.booking)

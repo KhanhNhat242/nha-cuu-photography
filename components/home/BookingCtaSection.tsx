@@ -1,6 +1,6 @@
 // F01 — Khối 8: Banner kêu gọi đặt lịch, tách biệt trước footer
 import Image from 'next/image'
-import { siteConfig } from '@/lib/site-config'
+import { siteConfig, sectionIds } from '@/lib/site-config'
 import { Section, reveal } from '@/components/ui/Section'
 import { ButtonLink } from '@/components/ui/ButtonLink'
 import { ArrowRightIcon, PhoneIcon, ZaloIcon } from '@/components/ui/Icons'
@@ -8,7 +8,7 @@ import { WoolLine } from '@/components/ui/WoolLine'
 
 export function BookingCtaSection() {
   return (
-    <Section tone="cream" divider={false} className="pt-0! pb-20! md:pb-24! lg:pb-28!" labelledBy="cta-title">
+    <Section id={sectionIds.booking} tone="cream" divider={false} className="pt-0! pb-20! md:pb-24! lg:pb-28!" labelledBy="cta-title">
       <div
         {...reveal('up')}
         className="paper-grain relative overflow-hidden rounded-[2rem] border border-line bg-cream-200 px-6 py-14 text-center md:rounded-[2.5rem] md:px-12 md:py-20"

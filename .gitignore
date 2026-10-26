@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 !.env.example
+
+# dữ liệu đặt lịch bản demo (lib/bookings/repository.ts)
+/.data

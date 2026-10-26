@@ -184,6 +184,39 @@ body {
   transition-delay: var(--reveal-delay, 0ms);
 }
 
+/* F10: trên mobile, cụm nút nổi tạm ẩn khi khách đang nhập form đặt lịch để không che ô nhập / nút gửi */
+.floating-contact {
+  transition: opacity 300ms ease;
+}
+@media (max-width: 767px) {
+  html:has(#form-dat-lich:focus-within) .floating-contact {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+/* Bento điểm mạnh (F01 khối 4): mỗi hàng 1 thẻ lớn (3 phần) + 1 thẻ nhỏ (2 phần).
+   Rê chuột vào thẻ nhỏ → hai thẻ trong hàng đổi bề rộng cho nhau.
+   data-reveal đặt ở lớp con bên trong, để transition-delay của reveal không làm trễ flex-grow. */
+@media (min-width: 768px) {
+  .usp-row > .usp-card {
+    flex-basis: 0;
+    transition: flex-grow 700ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .usp-row > .usp-card[data-size='large'] {
+    flex-grow: 3;
+  }
+  .usp-row > .usp-card[data-size='small'] {
+    flex-grow: 2;
+  }
+  .usp-row:has(> .usp-card[data-size='small']:hover) > .usp-card[data-size='small'] {
+    flex-grow: 3;
+  }
+  .usp-row:has(> .usp-card[data-size='small']:hover) > .usp-card[data-size='large'] {
+    flex-grow: 2;
+  }
+}
+
 /* Hoạ tiết SVG trang trí nhẹ nhàng bồng bềnh */
 @keyframes deco-float {
   0%,
@@ -263,6 +296,37 @@ body {
   animation: spin-slow 36s linear infinite;
 }
 
+/* Hero carousel: ảnh nền nhích phóng rất chậm (Ken Burns) */
+@keyframes ken-burns {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.anim-kenburns {
+  animation: ken-burns 14s ease-out both;
+}
+
+/* Hero carousel: thanh tiến trình chạy đúng bằng thời gian chờ tự chuyển ảnh (--duration) */
+@keyframes progress-fill {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.anim-progress {
+  transform-origin: left center;
+  animation: progress-fill var(--duration, 6500ms) linear both;
+}
+
 @media (scripting: none) {
   [data-reveal] {
     opacity: 1;
@@ -288,7 +352,9 @@ body {
   .lightbox-fade,
   .anim-rise,
   .anim-settle,
-  .anim-spin {
+  .anim-spin,
+  .anim-kenburns,
+  .anim-progress {
     animation: none;
   }
 }
